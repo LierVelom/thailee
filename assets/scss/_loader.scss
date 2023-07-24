@@ -1,0 +1,68 @@
+.loading-overlay {
+    visibility: hidden;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: visibility 2s ease-in-out, opacity 2s ease-in-out;
+}
+
+body.loading .loading-overlay {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-text {
+    --size: 400px;
+    position: absolute;
+    background-image: url(../images/logo.png);
+    width: var(--size);
+    max-width: 100%;
+    height: calc(var(--size) / 2);
+    background-position: center;
+    background-size: cover;
+    opacity: .8;
+}
+
+.loader {
+    width: 140px;
+    height: 140px;
+    background:
+        radial-gradient(farthest-side, $primary 90%, #0000) center/50px 50px,
+        radial-gradient(farthest-side, $primary-400 90%, #0000) bottom/24px 24px;
+    background-repeat: no-repeat;
+    animation: s7 3s infinite linear;
+    position: relative;
+    border-radius: 50%;
+    outline: 1px solid $primary-400;
+    outline-offset: -12px;
+    margin-left: -15px;
+    // transform: translateX(-10px);
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        inset: auto 0 32px;
+        margin: auto;
+        background: $primary-300;
+        border-radius: 50%;
+        transform-origin: 50% calc(100% + 20px);
+        animation: inherit;
+        animation-duration: 2s;
+    }
+}
+
+@keyframes s7 {
+    100% {
+        transform: rotate(1turn)
+    }
+}
