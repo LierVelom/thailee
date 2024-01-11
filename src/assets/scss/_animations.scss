@@ -1,0 +1,19 @@
+@keyframes myOrbit {
+    from {
+        transform: rotate(0deg) translateX(var(--path-size)) rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg) translateX(var(--path-size)) rotate(-360deg);
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-4900px, 0, 0);
+    }
+}

@@ -1,0 +1,441 @@
+@import 'fonts/Alexandria';
+@import 'variables';
+@import 'animations';
+@import 'loader';
+@import 'personal';
+
+* {
+    z-index: 2;
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Alexandria, sans-serif;
+    font-weight: 300;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+
+*::-webkit-scrollbar {
+    width: 16px;
+}
+
+*::-webkit-scrollbar-thumb {
+    border: 5px solid transparent;
+    background-clip: padding-box;
+    padding: 2px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 1);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 1) !important;
+}
+
+.system {
+    z-index: 1 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    // border: 1px solid #000;
+    height: 100vh;
+    // transform: translate(-50%, -50%);
+    opacity: .4;
+    user-select: none;
+    pointer-events: none;
+}
+
+.path {
+    user-select: none;
+    pointer-events: none;
+    --size: var(--diameter);
+    z-index: 1 !important;
+    border: 1px solid #e0c4fa;
+    width: var(--size);
+    padding-top: var(--size);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    --orb-size: calc(var(--size) * .05);
+
+    &::before {
+        user-select: none;
+        pointer-events: none;
+        --path-size: calc(var(--size) / 2);
+        content: "";
+        width: var(--orb-size);
+        height: var(--orb-size);
+        background-color: #e0c4fa;
+        position: absolute;
+        left: calc(var(--size) / 2 - var(--orb-size) / 2);
+        top: calc(var(--size) / 2 - var(--orb-size) / 2);
+        border-radius: 50%;
+        transform-origin: center;
+        animation: myOrbit var(--time) linear infinite;
+        pointer-events: none;
+    }
+}
+
+.color-burn {
+    z-index: 1 !important;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    background-color: #e0c4fa;
+    border-radius: 50%;
+    opacity: .4;
+}
+
+// --- Header --- //
+.header {
+    z-index: 500;
+    height: 100px;
+    // padding: 0 30px;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border-width: 0;
+
+    .logo {
+        margin-left: 30px;
+        display: block;
+        width: 150px;
+        height: 50px;
+        background-image: url(../images/logo.png);
+        background-size: cover;
+        background-position: center;
+    }
+
+    .language {
+        margin-left: auto;
+        margin-right: 40px;
+        position: relative;
+        cursor: pointer;
+
+        .language-menu {
+            visibility: hidden;
+            opacity: 0;
+            border: 1px solid #000;
+            padding: 10px 15px;
+            position: absolute;
+            width: max-content;
+            right: 0;
+            top: 0;
+            margin-top: 0;
+            list-style: none;
+            background-color: #fff;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, .125);
+            transition: all 250ms ease-in-out;
+
+            .language-item {
+                padding: 5px;
+
+                &:hover {
+                    font-weight: 400;
+                }
+
+                &.active {
+                    color: $primary-700;
+                    font-weight: 400;
+                }
+            }
+        }
+
+        &:hover {
+            .language-menu {
+                margin-top: 20px;
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.navbar-toggle {
+    display: none;
+}
+
+// --- Social links --- //
+.social-links {
+    width: max-content;
+    margin: auto;
+    display: flex;
+    padding: 30px 0;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    z-index: 500;
+    position: relative;
+
+    .social-item {
+        color: #000;
+        font-size: 23px;
+        transform: scale(1);
+        transition: all 200ms ease-in-out;
+        text-decoration: none;
+        width: 30px;
+        height: 30px;
+        border: 1px solid transparent;
+        border-radius: 50%;
+        text-align: center;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        >i::before {
+            vertical-align: -.125em;
+        }
+
+        &::before {
+            --path-size: 20px;
+            --orb-size: 0px;
+            content: "";
+            width: var(--orb-size);
+            height: var(--orb-size);
+            background-color: transparent;
+            position: absolute;
+            left: calc(50% - calc(var(--orb-size) / 2));
+            top: calc(50% - calc(var(--orb-size) / 2));
+            border-radius: 10px;
+            transform-origin: center;
+            animation: myOrbit 4s linear infinite;
+            pointer-events: none;
+            transition: all 200ms ease-in-out;
+        }
+
+        &:hover {
+            font-size: 20px;
+            border-color: #000;
+
+            &::before {
+                --orb-size: 5px;
+                background-color: #000;
+            }
+        }
+
+        &:active {
+            transform: scale(1.2);
+        }
+    }
+}
+
+// --- Navbar --- //
+
+.navbar {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    z-index: 1000;
+
+    &.show {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .navbar-menu {
+        list-style: none;
+        padding: 10px 20px;
+        background-color: transparent;
+        border-radius: 5px;
+
+        .navbar-item>.navbar-link {
+            text-decoration: none;
+            color: #000;
+            padding: 5px 10px;
+            display: block;
+            position: relative;
+            font-weight: 300;
+            transition: all .3s ease;
+
+            &::before {
+                content: '';
+                width: 10px;
+                height: 6px;
+                background-color: $primary;
+                position: absolute;
+                border-radius: 5px;
+                left: -20px;
+                top: 10px;
+                transition: all .2s ease-out;
+                opacity: 0;
+            }
+
+            &:hover {
+                padding-left: 15px;
+
+                &::before {
+                    opacity: 1;
+                    left: -10px;
+                }
+            }
+
+            &:active {
+                transform: scale(.92);
+            }
+        }
+    }
+}
+
+// --- Collaboration ---- //
+.collaboration-line {
+    position: fixed;
+    top: 50%;
+    right: -7rem;
+    margin-top: 10px;
+    transform: rotate(-90deg);
+    font-size: 1.2rem;
+    z-index: 1;
+    pointer-events: none;
+
+    &::after {
+        width: 80px;
+        height: 1px;
+        content: '';
+        background-color: #000;
+        position: absolute;
+        left: -25%;
+        bottom: .5rem;
+    }
+
+    &::before {
+        width: 80px;
+        height: 1px;
+        content: '';
+        background-color: #000;
+        position: absolute;
+        right: -25%;
+        top: .5rem;
+    }
+}
+
+// --- Main --- //
+main {
+    width: 900px;
+    max-width: 100%;
+    margin-top: 100px;
+    margin: auto;
+    position: relative;
+    border-width: 0;
+}
+
+@media only screen and (max-width: 576px) {
+
+    .path {
+        --size: calc(var(--diameter) * .7) !important;
+    }
+
+    .social-links {
+        gap: 0;
+    }
+
+    .header {
+        .logo {
+            margin-left: 10px;
+            width: 100px;
+        }
+
+        .language {
+            margin-right: 20px;
+        }
+    }
+
+
+}
+
+@media only screen and (max-width: 1200px) {
+    body.prevent-scroll {
+        overflow-y: hidden;
+    }
+
+    .collaboration-line {
+        display: none;
+    }
+
+    .navbar {
+        // left: -190px;
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, .8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 5;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .3s ease-in-out;
+
+        .navbar-menu {
+            text-align: center;
+
+            .navbar-link {
+                color: #fff !important;
+                font-size: 30px;
+
+                &::before {
+                    top: 17px !important;
+                }
+            }
+        }
+    }
+
+    .navbar-toggle {
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        right: 30px;
+        bottom: 20px;
+        background-color: transparent;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #000;
+        z-index: 6;
+        opacity: 1;
+        visibility: visible;
+        transition: all .3s ease-in-out;
+
+        &.hide {
+            opacity: 0;
+            visibility: hidden;
+            right: -55px;
+        }
+
+        &::before {
+            --path-size: 25px;
+            --orb-size: 10px;
+            content: "";
+            width: var(--orb-size);
+            height: var(--orb-size);
+            background-color: #000;
+            position: absolute;
+            left: calc(50% - calc(var(--orb-size) / 2));
+            top: calc(50% - calc(var(--orb-size) / 2));
+            border-radius: 10px;
+            transform-origin: center;
+            animation: myOrbit 4s linear infinite;
+            pointer-events: none;
+        }
+    }
+}
