@@ -12,10 +12,12 @@ import Modal from './components/Modal'
 import ProjectList from './components/ProjectComponents/ProjectList'
 import ProjectItem from './components/ProjectComponents/ProjectItem'
 import { useDispatch, useSelector } from 'react-redux'
-import modalSlice, { selectModal, toggleModal, updateModal } from './redux/slices/modalSlice'
+import { selectModal, toggleModal, updateModal } from './redux/slices/modalSlice'
 import ActivityList from './components/ActivitiesComponents/ActivityList'
 import ActivityBadge from './components/ActivitiesComponents/ActivityBadge'
 import ActivityItem from './components/ActivitiesComponents/ActivityItem'
+import Loader from './components/Loader'
+import { setLoader } from './redux/slices/loaderSlice'
 
 function App() {
 
@@ -23,9 +25,14 @@ function App() {
 	const modalState = useSelector(selectModal);
 	
 	useEffect(() => {
-		dispatch(toggleModal());
+		dispatch(setLoader(true));
+		dispatch(toggleModal(false));
 		dispatch(updateModal({	title: 'Hello', body: 'World' }));
 	}, [dispatch])
+
+	useEffect(() => {
+		setTimeout(() => dispatch(setLoader(false)), 500)
+	}, [])
 
 	// Handle Mouse Move Effect
 	const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -229,6 +236,8 @@ function App() {
 
 	return (
 		<>
+			<Loader />
+
 			<CollaborationLine />
 			<Header />
 			<SocialLinks links={socialLinks} />
@@ -237,6 +246,7 @@ function App() {
 
 			<main>
 				<Personal />
+
 
 				<Title titleId="Skills">Kỹ năng</Title>
 

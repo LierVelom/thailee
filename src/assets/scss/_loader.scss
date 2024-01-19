@@ -6,17 +6,19 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1000;
+    z-index: 1500;
     display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: visibility 2s ease-in-out, opacity 2s ease-in-out;
+    transform: scale(4);
+    transition: visibility 2s ease-in-out, opacity 2s ease-in-out, transform 2s ease-out;
 }
 
 .loading-overlay.loading {
     opacity: 1;
     visibility: visible;
+    transform: scale(1);
 }
 
 .loading-text {

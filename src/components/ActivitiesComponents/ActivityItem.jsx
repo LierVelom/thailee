@@ -7,7 +7,7 @@ const ActivityItem = ({ data, isOdd }) => {
 	const dispatch = useDispatch();
 	
 	useEffect(() => {
-		dispatch(toggleModal());
+		dispatch(toggleModal(false));
 		dispatch(updateModal({	title: 'Hello', body: 'World' }));
 	}, [dispatch])
 

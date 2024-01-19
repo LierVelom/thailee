@@ -6,7 +6,7 @@ import { useEffect } from "react";
 const ProjectItem = ({ project, mouseMoveEvent, mouseLeaveEvent }) => {
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(toggleModal());
+		dispatch(toggleModal(false));
 		dispatch(updateModal({	title: 'Hello', body: 'World' }));
 	}, [dispatch])
 

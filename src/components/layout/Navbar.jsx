@@ -13,16 +13,13 @@ const Navbar = () => {
 			<nav className={`navbar ${isNavbarOpen ? 'show' : ''}`} onClick={() => {setIsNavbarOpen(false); document.body.classList.remove('prevent-scroll');}}>
 				<ul className="navbar-menu">
 					<li className="navbar-item">
-						<a href="#" className="navbar-link">About</a>
+						<a href="#" className="navbar-link">Thông tin</a>
 					</li>
 					<li className="navbar-item">
 						<a href="#Skills" className="navbar-link">Kỹ năng</a>
 					</li>
 					<li className="navbar-item">
 						<a href="#Projects" className="navbar-link">Dự án</a>
-					</li>
-					<li className="navbar-item">
-						<a href="#Work" className="navbar-link">Làm việc</a>
 					</li>
 					<li className="navbar-item">
 						<a href="#Activities" className="navbar-link">Hoạt động</a>
