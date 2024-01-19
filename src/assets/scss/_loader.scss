@@ -14,7 +14,7 @@
     transition: visibility 2s ease-in-out, opacity 2s ease-in-out;
 }
 
-body.loading .loading-overlay {
+.loading-overlay.loading {
     opacity: 1;
     visibility: visible;
 }

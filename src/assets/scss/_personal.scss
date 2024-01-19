@@ -67,12 +67,14 @@ $height: 487px;
         right: 0;
         bottom: 0;
         width: 500px;
+        height: 539px;
         overflow-x: hidden;
+        overflow-y: hidden;
         pointer-events: none;
         img {
             position: relative;
             left: 0;
-            bottom: -3px;
+            bottom: 0px;
             width: calc(500px - 10vw);
             min-width: 100%;
         }
@@ -87,7 +89,7 @@ $height: 487px;
     height: $height;
     position: absolute;
     z-index: -1;
-    top: 130.5px;
+    top: 130px;
     left: 0;
     right: 0;
     overflow: hidden;
@@ -101,7 +103,7 @@ $height: 487px;
         background-repeat: repeat;
         background-size: 110px 55px;
         background-position: center;
-        animation: marquee 120s linear infinite;
+        animation: marquee 100s linear infinite;
         opacity: .5;
     }
 }

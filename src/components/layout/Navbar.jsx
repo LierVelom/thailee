@@ -4,15 +4,16 @@ const Navbar = () => {
 	const [isNavbarOpen, setIsNavbarOpen] = useState(false);
 
 	const handleNavbarToggle = () => {
+		document.body.classList.toggle('prevent-scroll');
 		setIsNavbarOpen(!isNavbarOpen);
 	};
 
 	return (
 		<>
-			<nav className={`navbar ${isNavbarOpen ? 'show' : ''}`} onClick={() => setIsNavbarOpen(false)}>
+			<nav className={`navbar ${isNavbarOpen ? 'show' : ''}`} onClick={() => {setIsNavbarOpen(false); document.body.classList.remove('prevent-scroll');}}>
 				<ul className="navbar-menu">
 					<li className="navbar-item">
-						<a href="#About" className="navbar-link">About</a>
+						<a href="#" className="navbar-link">About</a>
 					</li>
 					<li className="navbar-item">
 						<a href="#Skills" className="navbar-link">Kỹ năng</a>

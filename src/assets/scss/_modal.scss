@@ -1,0 +1,90 @@
+.modal-wrapper {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1050;
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+	outline: 0;
+	visibility: hidden;
+	transition: all .5s linear;
+
+	&.show {
+		visibility: visible;
+		&::after {
+			opacity: .5;
+		}
+
+		.modal {
+			margin-left: 0;
+		}
+	}
+
+	&::after {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 1040;
+		width: 100vw;
+		height: 100vh;
+		background-color: #000;
+		opacity: 0;
+		transition: opacity .5s linear;
+		content: '';
+	}
+}
+
+.modal {
+	box-sizing: border-box;
+	z-index: 1060;
+	background: white;
+	position: relative;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+	padding: 2rem;
+	margin-left: 100%;
+	transition: margin-left .3s ease-out;
+
+	.modal-body, .modal-header {
+		max-width: 750px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.modal-header {
+		display: flex;
+		justify-content: flex-start;
+		margin-bottom: 2rem;
+	}
+
+}
+
+.modal-close-button {
+	font-size: 1.4rem;
+	font-weight: 700;
+	line-height: 1;
+	color: rgba($color: #000000, $alpha: .8) !important;
+	cursor: pointer;
+	border: none;
+	background-color: transparent;
+	width: 70px;
+	height: 30px;
+	position: relative;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	transition: all .3s ease-out;
+	padding-left: 15px;
+
+	&:hover {
+		padding-left: 0;
+		color: rgba($color: #000000, $alpha: 1) !important;
+
+		i {
+			font-weight: 500;
+		}
+	}
+}
