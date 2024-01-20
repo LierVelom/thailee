@@ -191,12 +191,13 @@
 			.activity-content {
 				width: 100%;
 				min-height: 100px;
-				padding: 10px 20px;
+				padding: 10px 20px !important;
 				order: 2 !important;
 				border-width: 0 0 3px 0 !important;
 				align-items: center;
 				text-align: justify !important;
 			}
+			
 			&::after, &::before {
 				content: '';
 				display: none;
