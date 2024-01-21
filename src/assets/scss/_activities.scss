@@ -37,9 +37,10 @@
 			width: calc(50% - 40px);
 			height: 150px;
 			background-color: #000;
-			background-size: cover;
+			background-size: 100%;
 			background-position: center;
 			background-repeat: no-repeat;
+			transition: all 0.3s ease-in-out;
 			order: 1;
 			z-index: 5;
 		}
@@ -137,6 +138,9 @@
 				width: 40px;
 				height: 40px;
 				background-color: #000;
+			}
+			.activity-image {
+				background-size: 110%;
 			}
 		}
 	}
